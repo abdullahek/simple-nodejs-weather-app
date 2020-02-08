@@ -7,6 +7,9 @@ if($method == "POST")
 	$requestBody = file_get_contents('php://inputs');
 	$json = json_decode($requestBody);
 	$text = $json->queryresult->parameters->text;
+	$response->speech = "";
+	$response->displayText = "";
+	$response->source = "webhook";
 
 	switch ($text) {
 		case 'abd':
@@ -26,9 +29,7 @@ if($method == "POST")
 
 	$response = new \stdClass();
 
-	$response->speech = "";
-	$response->displayText = "";
-	$response->source = "webhook";
+	
 	echo json_encode($response);
 }
 else {
