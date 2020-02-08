@@ -32,7 +32,7 @@ if($method == "POST")
 
 	
 	 $response->speech =$speech;
-	  $response->displayText =$speech;
+	  $response->fulfillmentMessages[0]->text->text[0] =$speech;
 
 
 	
