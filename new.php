@@ -4,11 +4,13 @@ $method= $_SERVER['REQUEST_METHOD'];
 
 if($method == "POST")
 {
-	$requestBody = file_get_contents('php://inputs');
+	$requestBody = file_get_contents('php://input');
 	$json = json_decode($requestBody);
-	$text = $json->queryresult->parameters->text;
+	$text = $json->queryResult->parameters->text;
+	 // $text = "ek";
+
+	$response = new \stdClass();
 	$response->speech = "";
-	$response->displayText = "";
 	$response->source = "webhook";
 
 	switch ($text) {
@@ -27,7 +29,9 @@ if($method == "POST")
 			break;
 	}
 
-	$response = new \stdClass();
+	
+	 $response->speech =$speech;
+
 
 	
 	echo json_encode($response);
