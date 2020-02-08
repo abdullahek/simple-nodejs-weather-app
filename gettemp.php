@@ -10,7 +10,8 @@ if($method == "POST")
 	$getcity = $json->queryResult->parameters->text;
 	$api_key= "b1b67d862ffdcaeefa2625c26844382d";
 
-	$Api_url  = file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=washington&units=imperial&appid=${api_key}");
+
+	$Api_url  = file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=${getcity}&units=imperial&appid=${api_key}");
 	$newdata = json_decode($Api_url);
 
 
