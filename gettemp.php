@@ -8,16 +8,19 @@ if($method == "POST")
 	$requestBody = file_get_contents('php://input');
 	$json = json_decode($requestBody);
 	$getcity = $json->queryResult->parameters->text;
+	$api_key= "b1b67d862ffdcaeefa2625c26844382d";
 
-	$Api_url  = file_get_contents("https://samples.openweathermap.org/data/2.5/find?q=${getcity}&units=imperial&appid=b1b15e88fa797225412429c1c50c122a1");
+	$Api_url  = file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=washington&units=imperial&appid=${api_key}");
 	$newdata = json_decode($Api_url);
 
 
 
-	 $temp = $newdata->list[0]->main->temp;
-	 $city = $newdata->list[0]->name;
+	 $temp = $newdata->main->temp;
+	 $city = $newdata->name;
+	 $condition = $newdata->weather[0]->description;
 
-	 $message = " ${city} has ${temp} Celcuis Temperature right now.";
+
+	 $message = " ${city} has ${temp} Celcuis Temperature right now and it is ${condition}";
 
 
 	$response = new \stdClass();
