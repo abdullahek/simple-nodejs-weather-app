@@ -11,7 +11,7 @@ if($method == "POST")
 	$api_key= "44376623d6ff1998efb2f5439172362a";
 
 
-	$Api_url  = file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=${getcity}&units=imperial&appid=${api_key}");
+	$Api_url  = file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=${getcity}&units=metric&appid=${api_key}");
 	$newdata = json_decode($Api_url);
 
 
@@ -21,7 +21,7 @@ if($method == "POST")
 	 $condition = $newdata->weather[0]->description;
 
 
-	 $message = " ${city} has ${temp} Fahrenheit Temperature right now and it is ${condition}. Type Stop to finish the conservation.";
+	 $message = " ${city} has ${temp} Celsius  Temperature right now and it is ${condition}. Type Stop to finish the conservation.";
 
 
 	$response = new \stdClass();
