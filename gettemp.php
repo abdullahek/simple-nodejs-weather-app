@@ -21,7 +21,7 @@ if($method == "POST")
 	 $condition = $newdata->weather[0]->description;
 
 
-	 $message = " ${city} has ${temp} Celcuis Temperature right now and it is ${condition}. Type Stop to finish the conservation.";
+	 $message = " ${city} has ${temp} Fahrenheit Temperature right now and it is ${condition}. Type Stop to finish the conservation.";
 
 
 	$response = new \stdClass();
