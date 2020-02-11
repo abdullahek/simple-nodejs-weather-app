@@ -14,31 +14,38 @@ if($method == "POST")
 	$Api_url  = file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=${getcity}&units=metric&appid=${api_key}");
 	$newdata = json_decode($Api_url);
 
+	$response = new \stdClass();
 
-
+	if($newdata->cod==200)
+	{
 	 $temp = $newdata->main->temp;
 	 $city = $newdata->name;
 	 $condition = $newdata->weather[0]->description;
 
 
-	 $message = " The Temperature in ${city} is ${temp} Celsius.\nIt is ${condition} out there.\nType Stop to finish the conservation.";
+	 $message = " The Temperature in ${city} is ${temp} Celsius  and \n it is ${condition}.\n Type Stop to finish the conservation.";
 
 
-	$response = new \stdClass();
+	
 	$response->fulfillmentMessages[0]->text->text[0] =$message;
 
+
+
+	}
+	else 
+	{
+		$message="Sorry! City not found";
+		$response->fulfillmentMessages[0]->text->text[0] =$message;
+
+		
+	}
+
+echo json_encode($response);
+
+
+
+
 	
-		// //$gettemp = $newdata->message;
- 
-
-
-
-	
-
-
-
-	
-	echo json_encode($response);
 }
 
 
