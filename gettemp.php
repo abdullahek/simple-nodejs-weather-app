@@ -31,7 +31,7 @@ if($method == "POST")
 
 
 
-	}
+	}s
 	else 
 	{
 		$message="Sorry! City not found";
@@ -40,10 +40,7 @@ if($method == "POST")
 		
 	}
 
-<<<<<<< HEAD
 echo "Testing";
-=======
->>>>>>> 9fe85a86dfa8d9a55f11d8082480664c09cdd9ad
 echo json_encode($response);
 
 
